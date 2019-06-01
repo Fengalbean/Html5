@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS绘制图形</title>
+    <style>
+        .triangle1 {
+            border-left: 50px solid #000;
+            border-right: 50px solid red;
+            border-bottom: 50px solid blue;
+            border-top: 50px solid yellow;
+            width: 100px;
+            height: 100px;
+        }
+        .triangle2 {
+            border-left: 50px solid #000;
+            border-right: 50px solid red;
+            border-bottom: 50px solid blue;
+            border-top: 50px solid yellow;
+            width: 0;
+            height: 0;
+        }
+        .triangle3 {
+            border-left: 50px solid #000;
+            border-right: 50px solid red;
+            border-bottom: 50px solid blue;
+            /*border-top: 50px solid yellow;*/
+            width: 0;
+            height: 0;
+        }
+        .triangle4 {
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 50px solid blue;
+            /*border-top: 50px solid yellow;*/
+            width: 0;
+            height: 0;
+        }
+        span[data-title] {
+            position: relative;
+        }
+        span[data-title]:hover:before {
+            content: attr(data-title);
+            position: absolute;
+            top: -150%;
+            left: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<div class="" style="display: flex;justify-content: center;align-items: center; height: 600px;">
+    <p>hello ,<span data-title="你好,前端">FED</span></p>
+    <div class="triangle1"></div>
+    <div class="triangle2"></div>
+    <div class="triangle3"></div>
+    <div class="triangle4"></div>
+</div>
+
+<script>
+    var obj = [
+        {
+            a: "a",
+            b: "b"
+        },
+        {
+            c: "c",
+            d: "d"
+        }
+    ];
+    var o = [{e:"e",a:"a"}];
+
+
+</script>
+</body>
+</html>

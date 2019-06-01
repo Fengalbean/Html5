@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <title>let</title>
+</head>
+<body>
+
+<button type="button" id="btn">鼠标右键</button>
+<script src="../js/common.js"></script>
+<script src="../jquery/jquery.min.js"></script>
+<script>
+    Array.prototype.jsMap = function (callback) {
+        var i = 0,
+            l = this.length,
+            newArr = [];
+        for(; i < l ; i++) {
+            (function (currentValue,index,arr) {
+                newArr[i] = callback(currentValue,index,arr);
+            })(this[i],i,this)
+        }
+        return newArr;
+    };
+
+    var a = [1,2,3].jsMap(function (a,b,c) {
+        console.log(a,b,c);
+        return a*4
+
+    });
+
+    var b = [1,2,3].map(function (value) {
+        return value*2
+    });
+    console.log(a);
+
+    function Store(){
+        this.name = "xx";
+    }
+
+    console.log(new Store());
+
+</script>
+</body>
+</html>

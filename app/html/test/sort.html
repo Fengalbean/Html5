@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>扇形</title>
+    <meta charset="utf-8">
+    <!--设定缩放比，是否可缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <!--安全策略设置-->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src *;frame-src gap://* jsbridge://* wvjbscheme://*;style-src 'self' http://*.okii.com https://*.okii.com 'unsafe-inline'; script-src 'unsafe-inline' 'unsafe-eval' http://*.okii.com http://www.omwteam.com https://*.omwteam.com https://www.omwteam.com;">-->
+    <!---->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!--设置导航栏的风格-->
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!--避免IOS上数字和邮箱可操作-->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <!--设置缓存处理方式-->
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        .shan {
+            width: 0;
+            border: 40px solid green;
+            border-radius: 40px;
+            border-left: 40px solid transparent;
+            /*border-right: 0;*/
+            /*border-left: 20px solid red;*/
+            /*-moz-border-radius-topleft: 10px;*/
+            /*-moz-border-radius-bottomleft: 10px;*/
+        }
+    </style>
+</head>
+<body>
+<div class="shan"></div>
+
+
+<script>
+    function buildArr(l) {
+        var arr = [];
+        for(var i = 0; i < l; i++) {
+            arr.push( Math.floor(Math.random()*1000));
+        }
+        return arr;
+    }
+    var globalArr = buildArr(5);
+    // 冒泡排序
+    function bubbleSort(arr) {
+        console.time('冒泡排序耗时1');
+        var len = arr.length;
+        for(var i = 0; i < len; i++){
+            for (var j = 0; j < len-1-i;j++) {
+                if (arr[j] > arr[j+1]) {
+                    var tmp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = tmp;
+                }
+            }
+        }
+        console.timeEnd('冒泡排序耗时1');
+        return arr;
+    }
+    //改进冒泡排序： 设置一标志性变量pos,用于记录每趟排序中最后一次进行交换的位置。由于pos位置之后的记录均已交换到位,故在进行下一趟排序时只要扫描到pos位置即可。
+    console.log(bubbleSort(globalArr));
+    function bubbleSort2(arr) {
+        console.time('改进后冒泡排序耗时');
+        var i = arr.length - 1;  //初始时,最后位置保持不变
+        while ( i > 0) {
+            var pos= 0; //每趟开始时,无记录交换
+            for (var j= 0; j< i; j++) {
+                if (arr[j]> arr[j+1]) {
+                    pos= j; //记录交换的位置
+                    var tmp = arr[j]; arr[j]=arr[j+1];arr[j+1]=tmp;
+                }
+            }
+            i = pos; //为下一趟排序作准备
+        }
+        console.timeEnd('改进后冒泡排序耗时');
+        return arr;
+    }
+    console.log(bubbleSort2([3,1,4,8,5,10,7]));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+
+    function bubbleSort3(arr){
+        var low = 0;
+        var high= arr.length-1; //设置变量的初始值
+        var tmp,j;
+        console.time('2.改进后冒泡排序耗时');
+        while (low < high) {
+            //正向冒泡,找到最大者
+            for (j= low; j< high; ++j) {
+                if (arr[j]> arr[j+1]) {
+                    tmp = arr[j]; arr[j]=arr[j+1];arr[j+1]=tmp;
+                }
+            }
+            --high;                 //修改high值, 前移一位
+            //反向冒泡,找到最小者
+            for (j=high; j>low; --j){
+                if (arr[j]){
+                }
+            }
+
+        }
+    }
+</script>
+</body>
+</html>

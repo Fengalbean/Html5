@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>移动模板页面</title>
+    <!-- SEO内容 -->
+    <meta name="description" content="不超过150个字符">
+    <meta name="keywords" content="">
+    <meta name="author" content="name, email@gmail.com">
+
+    <!-- 为移动设备添加 viewport -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 关闭电话号码识别： -->
+    <meta content="telephone=no" name="format-detection">
+    <!-- 邮箱识别： -->
+    <meta content="email=no" name="format-detection">
+    <!-- 指定 iOS 的 safari 顶端状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- 禁止百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <!--添加到主屏后的标题（IOS）-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!--启用 WebApp 全屏模式（IOS）-->
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <h4>&lt;h3 contenteditable="true">hello world! &lt;/h3></h4>
+    <h3 contenteditable="true">hello world!</h3><br>
+
+    &lt;h2 Hidden="hidden">Hidden属性&lt;/h2>
+    <h2 Hidden="hidden">Hidden属性不可见</h2><br><br>
+
+    <h3 data-json="{a:'xxx'}" id="data">
+        点击我 data-自定属性
+    </h3>
+    <script>
+        setTimeout(function () {
+           console.log(1);
+        },0);
+        console.log(2);
+
+
+        var data = document.getElementById('data');
+        data.onclick = function () {
+            var json = this.dataset['json'];
+            alert(json);
+        }
+    </script>
+
+</div>
+</body>
+</html>

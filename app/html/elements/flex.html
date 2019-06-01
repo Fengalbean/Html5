@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <style>
+        .parent {
+            height: 1000px;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+            /*text-align: center;*/
+            /*line-height: 150px;*/
+            color: white;
+            font-size: 18px;
+        }
+
+        .box:nth-of-type(odd) {
+            background: #ff0000;
+        }
+
+        .box:nth-of-type(even) {
+            background: #0000ff;
+        }
+
+        .parent {
+            display: flex;
+            /*设置方向*/
+            flex-direction: column;
+
+            /*// 在主轴上内容呈现方式*/
+            justify-content: center;
+
+            /*// 在y轴*/
+            align-items: center;
+
+        }
+
+        .one {
+            flex-grow: 1;
+            flex-shrink: 0;
+        }
+
+        .two {
+            flex-grow: 2;
+            flex-shrink: 1;
+            flex-basis: 1200px;
+        }
+
+        .three {
+            flex-grow: 2;
+            flex-shrink: 1;
+            align-self: center;
+        }
+
+    </style>
+    <script src="../bootstrap/js/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="parent">
+        <div class="box one">1</div>
+        <div class="box two">
+            adssssss
+        </div>
+        <div class="box three">3</div>
+
+    </div>
+</div>
+<script src="../bootstrap/js/jquery.min.js"></script>
+<script>
+    var data = [
+        {
+            "accountId": "55D7947B61EF9F8FC6774E83E68A5E26CFC8C6D96B1457F7F4550310A238EFFA1FD65A9A9EBFAA87A7026644AE0695C1",//账号id
+            "step": 45,//步数
+            "status": 5,//状态  1-连接状态（已经匹配好）3-已完成拍照，准备游戏 5-已完成游戏'
+            "name":"lyf",//昵称
+            "enterTime":12334425435,//加入房间时间
+            "readyTime":32536457676,//完成拍照加入游戏时间
+            "icon": "http://watchgame.okii.com/1CC105BBD86939F55A9CAE0A409FAC1D?e=1553932114&token=UCAgtcR1BmKTKrnXCgBJoaJB7I4fRsqCVRqRouES:m-VPZP5NXWesjB4JOM2rA7uuI5Y="//头像地址
+        },
+        {
+            "accountId": "55D7947B61EF9F8FC6774E83E68A5E26CFC8C6D96B1457F7F4550310A238EFFA1FD65A9A9EBFAA87A7026644AE0695C1",//账号id
+            "step": 35,//步数
+            "status": 1,//状态  1-连接状态（已经匹配好）3-已完成拍照，准备游戏 5-已完成游戏'
+            "name":"lyf",//昵称
+            "enterTime":12334425435,//加入房间时间
+            "readyTime":32536457676,//完成拍照加入游戏时间
+            "icon": "http://watchgame.okii.com/1CC105BBD86939F55A9CAE0A409FAC1D?e=1553932114&token=UCAgtcR1BmKTKrnXCgBJoaJB7I4fRsqCVRqRouES:m-VPZP5NXWesjB4JOM2rA7uuI5Y="//头像地址
+        },
+        {
+            "accountId": "55D7947B61EF9F8FC6774E83E68A5E26CFC8C6D96B1457F7F4550310A238EFFA1FD65A9A9EBFAA87A7026644AE0695C1",//账号id
+            "step": 15,//步数
+            "status": 5,//状态  1-连接状态（已经匹配好）3-已完成拍照，准备游戏 5-已完成游戏'
+            "name":"lyf",//昵称
+            "enterTime":12334425435,//加入房间时间
+            "readyTime":32536457676,//完成拍照加入游戏时间
+            "icon": "http://watchgame.okii.com/1CC105BBD86939F55A9CAE0A409FAC1D?e=1553932114&token=UCAgtcR1BmKTKrnXCgBJoaJB7I4fRsqCVRqRouES:m-VPZP5NXWesjB4JOM2rA7uuI5Y="//头像地址
+        },
+        {
+            "accountId": "55D7947B61EF9F8FC6774E83E68A5E26CFC8C6D96B1457F7F4550310A238EFFA1FD65A9A9EBFAA87A7026644AE0695C1",//账号id
+            "step": 25,//步数
+            "status": 5,//状态  1-连接状态（已经匹配好）3-已完成拍照，准备游戏 5-已完成游戏'
+            "name":"lyf",//昵称
+            "enterTime":12334425435,//加入房间时间
+            "readyTime":32536457676,//完成拍照加入游戏时间
+            "icon": "http://watchgame.okii.com/1CC105BBD86939F55A9CAE0A409FAC1D?e=1553932114&token=UCAgtcR1BmKTKrnXCgBJoaJB7I4fRsqCVRqRouES:m-VPZP5NXWesjB4JOM2rA7uuI5Y="//头像地址
+        },
+        {
+            "accountId": "55D7947B61EF9F8FC6774E83E68A5E26CFC8C6D96B1457F7F4550310A238EFFA1FD65A9A9EBFAA87A7026644AE0695C1",//账号id
+            "step": 8,//步数
+            "status": 5,//状态  1-连接状态（已经匹配好）3-已完成拍照，准备游戏 5-已完成游戏'
+            "name":"lyf",//昵称
+            "enterTime":12334425435,//加入房间时间
+            "readyTime":32536457676,//完成拍照加入游戏时间
+            "icon": "http://watchgame.okii.com/1CC105BBD86939F55A9CAE0A409FAC1D?e=1553932114&token=UCAgtcR1BmKTKrnXCgBJoaJB7I4fRsqCVRqRouES:m-VPZP5NXWesjB4JOM2rA7uuI5Y="//头像地址
+        },
+        {
+            "accountId": "55D7947B61EF9F8FC6774E83E68A5E26CFC8C6D96B1457F7F4550310A238EFFA1FD65A9A9EBFAA87A7026644AE0695C1",//账号id
+            "step": 5,//步数
+            "status": 1,//状态  1-连接状态（已经匹配好）3-已完成拍照，准备游戏 5-已完成游戏'
+            "name":"lyf",//昵称
+            "enterTime":12334425435,//加入房间时间
+            "readyTime":32536457676,//完成拍照加入游戏时间
+            "icon": "http://watchgame.okii.com/1CC105BBD86939F55A9CAE0A409FAC1D?e=1553932114&token=UCAgtcR1BmKTKrnXCgBJoaJB7I4fRsqCVRqRouES:m-VPZP5NXWesjB4JOM2rA7uuI5Y="//头像地址
+        }
+    ]
+    function quickSort(arr) {
+        debugger
+        for (var i = 0; i < arr.length; i++) {
+            if (Number(arr[i].status) !== 5) {
+                arr.splice(i,1);
+                continue;
+            }
+            for (var j = 0; j < arr.length - 1; j++) {
+                if (arr[j].step < arr[j + 1].step) {
+                    // 设置临时变量交换位置
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+    $.ajax({
+        url: 'http://172.28.194.34:8070/watchaccount/updateBabyName',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            "id":"c97b22c0aaac4b5f97ea7b09719b9b9649135757",
+            "name":"haha"
+        },
+        success: function(res){
+            console.log(res);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    })
+    console.log(quickSort(data));
+
+</script>
+</body>
+</html>
