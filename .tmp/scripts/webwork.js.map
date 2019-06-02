@@ -1,0 +1,1 @@
+{"version":3,"sources":["webwork.js"],"names":["worker","Worker"],"mappings":";;AAAA,IAAIA,MAAM,GAAG,IAAIC,MAAJ,CAAW,UAAX,CAAb","sourcesContent":["var worker = new Worker('../html/')"],"file":"webwork.js"}
