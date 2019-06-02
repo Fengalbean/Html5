@@ -60,10 +60,12 @@
     });
     o._data.test = 'xxxxxxx';
 
-    $('btn').onclick = function () {
+    // $('value').onChange = function () {
+    //     o._data.test = $('value').value;
+    // };
+    $('value').addEventListener('input',function (ev) {
         o._data.test = $('value').value;
-    }
-
+    })
 </script>
 </body>
 </html>

@@ -109,11 +109,35 @@ function html() {
     .pipe(dest('dist'));
 }
 
+function subHtml() {
+  return src('app/html/**/*.html')
+    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+    .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
+    .pipe($.if(/\.css$/, $.postcss([cssnano({safe: true, autoprefixer: false})])))
+    .pipe($.if(/\.html$/, $.htmlmin({
+      collapseWhitespace: true,
+      minifyCSS: true,
+      minifyJS: {compress: {drop_console: true}},
+      processConditionalComments: true,
+      removeComments: true,
+      removeEmptyAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true
+    })))
+    .pipe(dest('dist/html'));
+}
+
 function images() {
   return src('app/images/**/*', { since: lastRun(images) })
     .pipe($.imagemin())
     .pipe(dest('dist/images'));
 };
+
+function copyResource() {
+  return src('app/resource/*')
+    .pipe(dest('dist/resource/'));
+};
+
 
 function fonts() {
   return src('app/fonts/**/*.{eot,svg,ttf,woff,woff2}')
@@ -129,6 +153,8 @@ function extras() {
   }).pipe(dest('dist'));
 };
 
+
+
 function clean() {
   return del(['.tmp', 'dist'])
 }
@@ -142,8 +168,9 @@ const build = series(
   clean,
   parallel(
     lint,
-    series(parallel(styles, scripts, modernizr), html),
+    series(parallel(styles, scripts, modernizr), html,subHtml),
     images,
+      copyResource,
     fonts,
     extras
   ),
@@ -164,7 +191,9 @@ function startAppServer() {
 
   watch([
     'app/*.html',
+    'app/html/*.html',
     'app/images/**/*',
+    'app/resource/**/*',
     '.tmp/fonts/**/*'
   ]).on('change', server.reload);
 

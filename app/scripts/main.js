@@ -1,9 +1,15 @@
-console.log('\'Allo \'Allo!');
+$(function () {
+  $.getJSON('./resource/json/urls.json',function (res) {
+    console.log(res);
+   renderList(res);
+  });
 
-// Uncomment to enable Bootstrap tooltips
-// https://getbootstrap.com/docs/4.0/components/tooltips/#example-enable-tooltips-everywhere
-// $(function () { $('[data-toggle="tooltip"]').tooltip(); });
 
-// Uncomment to enable Bootstrap popovers
-// https://getbootstrap.com/docs/4.0/components/popovers/#example-enable-popovers-everywhere
-// $(function () { $('[data-toggle="popover"]').popover(); });
+  function renderList(res) {
+    var data = {
+      list: res
+    };
+    var html = template('listTpl', data);
+    $('#list').html(html);
+  }
+});
